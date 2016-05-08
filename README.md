@@ -6,4 +6,4 @@ npm install
 node server.js
 
 ###
-open browser http://localhost:8080/index.html
+open http://localhost:8080/index.html
