@@ -1,5 +1,5 @@
 # Api Health Monitor
-`This is a tool to monitor health of APIs`
+`Tool to monitor APIs health`
 
 ## Install
 ```
