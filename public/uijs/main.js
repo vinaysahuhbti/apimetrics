@@ -8,7 +8,7 @@ app.controller('dataCtrl', function($scope, $http) {
         time:2.34
     },
         {
-            api:"http://dvdsafasd ",
+            api:"http://localhost:8080/sampleapi ",
             type:"GET",
             response:204,
             time:2.34

@@ -21,23 +21,30 @@
 <div ng-app="dotmatrix">
     <div ng-controller="dataCtrl">
         <div>
-            <h3 style="text-align: center">API Health Monitoring System</h3>
+            <h3>
+                <div style="border: double; text-align: center">API Health Monitoring System</div>
+            </h3>
             <button ng-click="openModal()" style="float: right;">Modify</button>
         </div>
         <br>
-        <div><h5>
-            <span style="margin-right: 30px">Request Type</span>
-            <span>API</span>
-            <span style="float: right;margin-right: 10px;">Response Code</span>
-            <span style="float: right;margin-right: 100px;">Response Time(ms)</span></h5>
-        </div>
-        <div ng-repeat="d in data">
-            <hr/>
-            <span style="margin-right: 30px">{{d.type}}</span>
-            <span>{{d.api}}</span>
-            <span style="float: right;margin-right: 50px;" class="getIcon()">{{d.response}}</span>
-            <span style="float: right;margin-right: 150px;">{{d.time}}</span>
-        </div>
+        <table st-table="rowCollection" class="table table-striped">
+            <thead>
+            <tr>
+                <th>Request Type</th>
+                <th>API URL</th>
+                <th>Response Code</th>
+                <th>Response Time(in ms)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="row in data">
+                <td>{{row.type}}</td>
+                <td>{{row.api}}</td>
+                <td>{{row.response}}</td>
+                <td>{{row.time}}</td>
+            </tr>
+            </tbody>
+        </table>
 
         <div id="modifyApi" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
              aria-hidden="true">
@@ -48,15 +55,25 @@
                         <h4 class="modal-title" id="myModalLabel">Edit API</h4>
                     </div>
                     <div class="modal-body">
-                        <div ng-repeat="d in data">
-                            API : <input type="text" ng-model="d.api" style="margin-right: 90px">
-                            Type: <select ng-model="d.type" ng-options="item for item in type"
-                                          style="margin-right: 10px">
-                        </select>
-                            <span style="float: right;" class="glyphicon glyphicon-remove-circle"
-                                  ng-click="removeApi($index)"></span>
-                        </div>
-                        Refresh rate(in s):<input type="number" ng-model="refreshrate">
+
+                        <table st-table="rowCollection" class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>API URL</th>
+                                <th>API Type</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="row in data">
+                                <td><input type="text" ng-model="row.api" style="display:table-cell; width:100%"></td>
+                                <td><select ng-model="row.type" ng-options="item for item in type"/></td>
+                                <td> <span class="glyphicon glyphicon-remove-circle"
+                                           ng-click="removeApi($index)"/></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        Refresh rate(in seconds):<input type="number" ng-model="refreshrate">
                     </div>
                     <div class="wrapper">
                         <button ng-click="addApi()">Add API</button>
