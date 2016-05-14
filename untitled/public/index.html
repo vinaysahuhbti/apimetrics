@@ -1,0 +1,36 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="stylesheet" href="main.css">
+    <script src="uijs/angular.js"></script>
+
+</head>
+<body>
+<div ng-app="apihealth">
+    <div ng-controller="apiCtrl">
+        Email ID : <input type="text" ng-model="mailid">
+        IMEID : <input type="text" ng-model="imeid"><br>
+        <button ng-click="getData()">Get Data</button>
+        <br>
+        Total count:{{count}}
+        <table>
+            <hr/>
+            <tr ng-repeat="d in data">
+                <td ng-class="d.type" style="border-bottom: 1px solid #000">
+                    <pre>{{formatt(d)}}</pre>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script src="uijs/main.js"></script>
+</body>
+</html>

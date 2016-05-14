@@ -34,6 +34,7 @@ var serveRequest=function(data, callback){
   var len = data.length;
   var clen = 0;
     var response=[];
+
     for(var i=0;i<len;i++){
         if("GET"==data[i].type){
             getRequest(data[i], response, function(data){
@@ -56,17 +57,17 @@ var serveRequest=function(data, callback){
 };
 
 var getRequest = function(data, resp, callback){
-    var obj = {api:data.api,type:"GET",status:"",time:""};
+    var obj = {api:data.api,type:"GET",status:"",time:"", mail:data.mail};
     var t = Math.floor(Date.now());
     request(data.api, function (error, response, body) {
             obj.response = response?response.statusCode:"404";
             obj.time = Math.floor(Date.now())-t;
             resp[resp.length]=obj;
-            callback(null);
+        callback(null);
     })
 };
 var postRequest = function(data, resp, callback){
-    var obj = {api:data.api,type:"POST",status:"",time:""};
+    var obj = {api:data.api,type:"POST",status:"",time:"",mail:data.mail};
     var t = Math.floor(Date.now() / 1000);
     request.post({url:data.api}, function(err,response,body){
         obj.response = response?response.statusCode:"404";

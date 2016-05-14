@@ -32,16 +32,18 @@
             <tr>
                 <th>Request Type</th>
                 <th>API URL</th>
-                <th>Response Code</th>
+                <th>Response</th>
                 <th>Response Time(in ms)</th>
+                <<th>Alert</th>
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat="row in data">
                 <td>{{row.type}}</td>
                 <td>{{row.api}}</td>
-                <td>{{row.response}}</td>
+                <td><span class="{{getIcon(row.response)}}"/> </td>
                 <td>{{row.time}}</td>
+                <td><a href="mailto:{{row.mail}}?Subject=Alert%20From%20API%20Monitor">Send Mail</a></td>
             </tr>
             </tbody>
         </table>
@@ -61,6 +63,7 @@
                             <tr>
                                 <th>API URL</th>
                                 <th>API Type</th>
+                                <th>Alert</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -68,6 +71,7 @@
                             <tr ng-repeat="row in data">
                                 <td><input type="text" ng-model="row.api" style="display:table-cell; width:100%"></td>
                                 <td><select ng-model="row.type" ng-options="item for item in type"/></td>
+                                <td><input type="text" ng-model="row.mail" style="display:table-cell; width:100%"></td>
                                 <td> <span class="glyphicon glyphicon-remove-circle"
                                            ng-click="removeApi($index)"/></td>
                             </tr>
