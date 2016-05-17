@@ -1,5 +1,6 @@
-# Api Health Monitor
-`Tool to monitor APIs health`
+# API Metrics
+
+`Intelligent API monitoring`
 
 ## Install
 ```
